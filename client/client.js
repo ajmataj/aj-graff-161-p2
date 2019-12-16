@@ -20,12 +20,10 @@ fetch(API_URL)
 
         // Card container
         const link = document.createElement('a');
+        link.setAttribute('target', '_blank');
         link.href = `https://www.youtube.com/watch?v=${video.id.videoId}`;
         const videoElement = document.createElement('div');
-        videoElement.className = 'ma-1';
-
-        // Extra append for proper styling
-        colDiv.appendChild(videoElement);
+        videoElement.className = 'card ma-1';
 
         // Thumbnail
         const imageRes = video.snippet.thumbnails.standard || video.snippet.thumbnails.medium || video.snippet.thumbnails.high;
@@ -47,18 +45,17 @@ fetch(API_URL)
         h5.textContent = video.snippet.title;
         mediaBody.appendChild(h5);
 
-        
+        colDiv.appendChild(link);
         videosElement.appendChild(colDiv);
+        link.appendChild(videoElement);
     });
 });
 
 function filterList(event) {
-    const filter = event.target.value;
     if (allVideos) {
         const regExp = new RegExp(filterInput.value, 'gi');
         allVideos.forEach(video => {
             if (video.snippet.title.match(regExp)) {
-                console.log(video);
                 // Show video
                 videoElementsById[video.id.videoId].style.display = '';
             } else {

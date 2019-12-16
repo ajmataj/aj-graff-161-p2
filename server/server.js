@@ -17,7 +17,7 @@ app.use(cors());
  * @desc Get YouTube API search results
  */
 app.get('/videos', (req, res) => {
-    const url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=metallica";
+    const url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=metallica&type=video";
     fetch(`${url}&key=${process.env.GOOGLE_API_KEY}`)
     .then(response => response.json())
     .then(json => {

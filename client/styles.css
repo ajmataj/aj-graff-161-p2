@@ -1,0 +1,13 @@
+a {
+    color: white;
+
+}
+
+a:hover {
+    color: rgb(27, 183, 255);
+    text-decoration: none;
+}
+
+.link {
+    margin: 0.5em;
+}
